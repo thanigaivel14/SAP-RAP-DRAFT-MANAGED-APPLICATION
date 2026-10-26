@@ -1,0 +1,73 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Booking',
+    typeNamePlural: 'Bookings',
+    title: {
+      type: #STANDARD,
+      value: 'BookingId'
+    }
+  }
+}
+
+annotate entity zcd_booking_child with
+{
+
+  @UI.facet: [
+     {
+       id: 'Booking',
+       purpose: #STANDARD,
+       type: #IDENTIFICATION_REFERENCE,
+       label: 'Booking Details',
+       position: 10
+     },
+     { id :'Supply',
+     purpose: #STANDARD,
+     type: #LINEITEM_REFERENCE,
+     label: 'Supplyment',
+     targetElement: '_supply',
+        position: 20
+      }
+   ]
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  BookingId;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  CustomerId;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  CarrierId;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  ConnectionId;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  FlightDate;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  FlightPrice;
+
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification: [{ position: 70 }]
+  @Consumption.valueHelpDefinition: [
+    {
+      entity: {
+        name: 'I_Currency',
+        element: 'Currency'
+      }
+    }
+  ]
+  CurrencyCode;
+
+  @UI.lineItem: [{ position: 80 }]
+  @UI.identification: [{ position: 80 }]
+  BookingStatus;
+  
+}
